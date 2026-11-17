@@ -4464,6 +4464,9 @@ button,a,summary,[role=button],[role=tab],label,select{touch-action:manipulation
   /* mensajes sueltos de Provi (aviso, recordatorio) */
   #pvmsg{left:max(8px,var(--sal));right:max(8px,var(--sar));width:auto;bottom:calc(74px + var(--sab));border-radius:18px;font-size:15px;padding:13px 44px 13px 14px}
   #pvmsg .pv-b{min-height:44px;padding:8px 14px;font-size:14px}
+  #pvmsg{padding:10px 42px 10px 12px;gap:8px;font-size:14.5px;line-height:1.35}
+  #pvmsg .pv-ba{gap:8px;margin-top:8px}
+  #pvmsg .pv-b.pv-quiet{margin-left:0;padding-left:6px}
   #pvmsg .pv-b.pv-quiet{min-height:40px;font-size:13px}
   #v6tip,#mas.bl~#v6tip{right:max(10px,var(--sar));bottom:calc(72px + var(--sab));max-width:calc(100vw - 96px)}
 
@@ -4530,6 +4533,39 @@ button,a,summary,[role=button],[role=tab],label,select{touch-action:manipulation
   .modal .body{max-height:calc(100dvh - 140px)}
   .ov{padding-top:8px}
 }
+</style>
+<style id="mnav5208css">
+/* v5.20.8 · barra inferior de navegación (zona del pulgar) — sólo celular */
+#mnav{display:none}
+@media (max-width:700px){
+  :root{--mnh:62px}
+  body{padding-bottom:calc(var(--mnh) + var(--sab))}
+  body:has(input:focus,textarea:focus,select:focus){padding-bottom:0}
+  body:has(input:focus,textarea:focus,select:focus) #mnav{display:none}
+  #mnav{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;left:0;right:0;bottom:0;z-index:46;height:calc(var(--mnh) + var(--sab));padding:6px max(6px,var(--sar)) var(--sab) max(6px,var(--sal));background:var(--card,#fff);border-top:1px solid var(--line,#dfe8e3);box-shadow:0 -6px 22px rgba(0,50,25,.10)}
+  #mnav a,#mnav button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:0;border:0;background:none;color:var(--mut,#55655d);font:inherit;font-size:11.5px;font-weight:700;letter-spacing:.01em;text-decoration:none;border-radius:14px;padding:2px 0;-webkit-tap-highlight-color:transparent}
+  #mnav svg{width:24px;height:24px;display:block;transition:transform .15s}
+  #mnav .mi{display:grid;place-items:center;width:52px;height:30px;border-radius:15px;transition:background .15s}
+  #mnav a.on,#mnav button.on{color:var(--gd,#00552d)}
+  #mnav a.on .mi,#mnav button.on .mi{background:var(--gl,#dcefe3)}
+  #mnav a:active .mi,#mnav button:active .mi{background:var(--gl,#dcefe3);transform:scale(.94)}
+  #mnav a:focus-visible,#mnav button:focus-visible{outline:3px solid var(--g,#007a41);outline-offset:-3px}
+  html[data-theme="dark"] #mnav{background:#16211b;border-top-color:#2b3a33}
+  html[data-theme="dark"] #mnav a.on,html[data-theme="dark"] #mnav button.on{color:var(--gd-t,#86dcb0)}
+  html[data-theme="dark"] #mnav a.on .mi,html[data-theme="dark"] #mnav button.on .mi{background:rgba(78,196,137,.18)}
+  /* todo lo flotante sube para no quedar detrás de la barra */
+  #mas,#mas.bl{bottom:calc(var(--mnh) + var(--sab) + 8px)}
+  #pvmsg{bottom:calc(var(--mnh) + var(--sab) + 70px)}
+  #v6tip,#mas.bl~#v6tip{bottom:calc(var(--mnh) + var(--sab) + 70px)}
+  .v7pill{bottom:calc(var(--mnh) + var(--sab) + 10px)}
+  .cal-fab{bottom:calc(var(--mnh) + var(--sab) + 14px)}
+  body:has(.v7pill) .cal-fab{bottom:calc(var(--mnh) + var(--sab) + 84px)}
+  .k16-bar.on{bottom:calc(var(--mnh) + var(--sab) + 8px)}
+  #view .page,#view .page.rd{padding-bottom:88px}
+  .bk7{top:auto;bottom:calc(var(--mnh) + var(--sab) + 8px)}
+}
+@media (max-width:700px) and (max-height:480px){#mnav{display:none}body{padding-bottom:0}}
+@media print{#mnav{display:none!important}}
 </style>
 </head>
 <body data-app-version="5.20.8">
@@ -6603,6 +6639,64 @@ html[data-theme="dark"] .ph-err{color:#f3d588;background:#3a3012;border-color:#7
   .btn.sm{flex:0 1 auto}
 }
 </style>
+<style id="mobscroll5208">
+/* v5.20.8 · celular: el scroll vive en un contenedor propio (no en el documento del iframe).
+   Así el panel de solapas no «rebota» ni se corre al deslizar, y la página no hace pull-to-refresh. */
+@media (max-width:700px){
+  html.mobsc,html.mobsc body{height:100%;overflow:hidden;overscroll-behavior:none}
+  html.mobsc #app{height:100%;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;scroll-behavior:auto}
+  html.mobsc .page{padding-bottom:96px}
+  /* paneles pegajosos: pegados al borde superior real (antes dejaban un hueco de 44–78 px) */
+  html.inhub .tabs,html.mobsc .tabs{top:0;margin-left:-16px;margin-right:-16px;padding-left:16px;padding-right:16px}
+  html.inhub .cx-form,html.mobsc .cx-form,html.mobsc .of-form{position:static}
+  html.mobsc .ofx-r{position:static;max-height:none;overflow:visible}
+  .fs-idx{top:0;margin-left:-16px;margin-right:-16px;padding:8px 16px;gap:8px;scrollbar-width:none;box-shadow:0 6px 10px -8px rgba(0,50,25,.35);-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;transform:translateZ(0)}
+  .fs-idx::-webkit-scrollbar,.tabs::-webkit-scrollbar{display:none}
+  .fs-idx button{min-height:44px;padding:8px 16px;font-size:14px;scroll-snap-align:center}
+  .fs{scroll-margin-top:72px;border-radius:14px}
+  .fs-h{padding:12px 14px}.fs-b{padding:14px}
+  .tabs{scrollbar-width:none}
+}
+</style>
+<script id="mobscroll5208js">
+(function(){
+  try{
+    var H=document.documentElement,mq=window.matchMedia('(max-width:700px)');
+    function on(){return H.classList.contains('mobsc')}
+    function app(){return document.getElementById('app')}
+    function set(){H.classList.toggle('mobsc',mq.matches)}
+    set();
+    if(mq.addEventListener)mq.addEventListener('change',set);else if(mq.addListener)mq.addListener(set);
+    var oT=window.scrollTo.bind(window);
+    window.scrollTo=function(a,b){
+      if(!on()||!app())return oT.apply(window,arguments);
+      var o=(a&&typeof a==='object')?a:{left:a,top:b};
+      var s=app();
+      try{s.scrollTo({top:o.top||0,left:o.left||0,behavior:o.behavior||'auto'})}catch(e){s.scrollTop=o.top||0}
+    };
+    ['scrollY','pageYOffset'].forEach(function(k){
+      try{
+        var d=Object.getOwnPropertyDescriptor(window,k),g=d&&d.get;
+        Object.defineProperty(window,k,{configurable:true,get:function(){return(on()&&app())?app().scrollTop:(g?g.call(window):0)}});
+      }catch(e){}
+    });
+    /* los eventos «scroll» del contenedor se reenvían a window (los popups se reposicionan con eso) */
+    var raf=0;
+    document.addEventListener('scroll',function(e){
+      if(!e.target||e.target.id!=='app')return;
+      try{window.dispatchEvent(new Event('scroll'))}catch(x){}
+      if(raf)return;raf=requestAnimationFrame(function(){raf=0;centerTab()});
+    },true);
+    /* la solapa activa del índice de la ficha queda visible (sin mover la página) */
+    function centerTab(){
+      var ix=document.getElementById('fsIdx');if(!ix)return;
+      var a=ix.querySelector('.on');if(!a)return;
+      var l=a.offsetLeft-(ix.clientWidth-a.offsetWidth)/2;
+      if(Math.abs(ix.scrollLeft-l)>4){try{ix.scrollTo({left:l,behavior:'smooth'})}catch(e){ix.scrollLeft=l}}
+    }
+  }catch(e){}
+})();
+<@@/script>
 </head>
 <body>
 <div id="app" class=""></div>
@@ -27794,4 +27888,48 @@ BP.IC=IC;
   });
 })();
 
-</script></body></html>
+</script><script id="mnav5208js">
+(function(){
+  try{
+    var IC={
+      home:'<path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9.5h13V10"/><path d="M10 19.5v-5h4v5"/>',
+      cart:'<rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 10h18"/><path d="M7 15h4"/>',
+      mis:'<rect x="5" y="4" width="14" height="17" rx="3"/><path d="M9 4.5h6"/><path d="m9 13 2 2 4-4.5"/>',
+      prod:'<path d="M12 3c3 2 5 5.5 5 9l-2 4h-6l-2-4c0-3.500 2-7 5-9Z"/><circle cx="12" cy="10" r="1.6"/><path d="M9.5 19.5 12 17l2.500 2.500"/>',
+      more:'<circle cx="5.500" cy="12" r="1.600"/><circle cx="12" cy="12" r="1.600"/><circle cx="18.500" cy="12" r="1.600"/>'
+    };
+    function svg(k){return '<span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+IC[k]+'</svg></span>'}
+    var n=document.createElement('nav');n.id='mnav';n.setAttribute('aria-label','Navegación inferior');
+    n.innerHTML=
+      '<a href="#/" data-k="home">'+svg('home')+'<span>Inicio</span></a>'+
+      '<a href="#/cartera" data-k="cart">'+svg('cart')+'<span>Cartera</span></a>'+
+      '<a href="#/mis" data-k="mis">'+svg('mis')+'<span>Gestiones</span></a>'+
+      '<a href="#/portal/sell" data-k="prod">'+svg('prod')+'<span>Productos</span></a>'+
+      '<button type="button" data-k="more" aria-label="Más secciones: abrir el menú">'+svg('more')+'<span>Más</span></button>';
+    document.body.appendChild(n);
+    function cur(){
+      var h=(location.hash||'#/').replace(/^#/,'');
+      if(h===''||h==='/'||h.indexOf('/inicio')===0)return'home';
+      if(h.indexOf('/cartera')===0)return'cart';
+      if(h.indexOf('/mis')===0)return'mis';
+      if(h.indexOf('/portal/sell')===0)return'prod';
+      return'more';
+    }
+    function mark(){var k=cur();[].forEach.call(n.children,function(e){var on=e.getAttribute('data-k')===k;e.classList.toggle('on',on);if(on)e.setAttribute('aria-current','page');else e.removeAttribute('aria-current')})}
+    window.addEventListener('hashchange',mark);
+    new MutationObserver(mark).observe(document.body,{attributes:true,attributeFilter:['data-view']});
+    mark();
+    n.addEventListener('click',function(e){
+      var b=e.target.closest('button[data-k=more]');
+      if(b){e.preventDefault();e.stopPropagation();var m=document.querySelector('#hbar button[aria-label^="Abrir menú"]');if(m)m.click();return}
+      var a=e.target.closest('a[data-k]');
+      if(a&&a.getAttribute('href')===(location.hash||'#/')){
+        /* tocar la sección actual: volver arriba */
+        e.preventDefault();var v=document.getElementById('view');if(v)try{v.scrollTo({top:0,behavior:'smooth'})}catch(x){v.scrollTop=0}
+        try{var f=document.getElementById('portalFrame');if(f&&f.contentWindow)f.contentWindow.scrollTo({top:0,behavior:'smooth'})}catch(x){}
+      }
+    });
+  }catch(e){}
+})();
+</script>
+</body></html>
