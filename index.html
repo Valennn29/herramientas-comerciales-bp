@@ -2,7 +2,7 @@
 <html lang="es-AR"><head>
 <meta charset="utf-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; media-src data: blob:; connect-src 'none'; frame-src about: data: blob:; worker-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="application-name" content="Herramientas comerciales BP">
 <script>try{if(localStorage.getItem("bp_theme_v1")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
 <script>try{(function(){var h=document.documentElement,v=localStorage.getItem("bp_fs_v1");if(!v){var z=parseFloat(localStorage.getItem("bp_zoom_v1"));v=z>0&&z<0.95?"s":z>1.05?"l":"m";localStorage.setItem("bp_fs_v1",v)}if(v==="s"||v==="l")h.setAttribute("data-fs",v)})()}catch(e){}</script>
@@ -4374,6 +4374,163 @@ html[data-theme="dark"] .card.ac-glow[data-st="err"]{--acg:255,147,139}
 @keyframes acglow{0%,100%{box-shadow:0 0 0 3px rgba(var(--acg),.10),0 6px 20px rgba(var(--acg),.16)}50%{box-shadow:0 0 0 4px rgba(var(--acg),.22),0 10px 32px rgba(var(--acg),.34)}}
 @media (prefers-reduced-motion:reduce){.card.ac-glow{animation:none}}
 </style>
+<style id="mob5208css">
+/* =====================================================================
+   v5.20.8 · MÓVIL — celular cómodo y 100% responsivo
+   (botones táctiles, asistente Provi como panel inferior, avisos,
+   ventanas como hoja inferior, pestañas deslizables, áreas seguras iPhone)
+   ===================================================================== */
+:root{--sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px);--sal:env(safe-area-inset-left,0px);--sar:env(safe-area-inset-right,0px)}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+button,a,summary,[role=button],[role=tab],label,select{touch-action:manipulation;-webkit-tap-highlight-color:rgba(0,122,65,.12)}
+
+/* ---------- 1) TÁCTIL (cualquier pantalla con dedo): objetivos de al menos 44 px ---------- */
+@media (pointer:coarse){
+  .btn{min-height:44px}
+  .btn.sm{min-height:42px;padding:8px 14px;font-size:14px}
+  .btn.lg{min-height:50px}
+  .fchip,.chip,.tab,.gtab,.seg button,.tbar .hb-ic,.lk,.h3x-lk,.hx-btn,.hx-ar,.cal-vacbtn,.cc-ent,.cc-cli,.cc-reu,.cc-tra,.cc-otr,.cc-ges,.mis-hc,.pv-b,.sb-gt{min-height:42px}
+  .sb-gt{min-width:42px}
+  .tbar .hb-ic{min-width:42px}
+  .lk,.h3x-lk,.hx-btn{padding-top:9px;padding-bottom:9px}
+  .fchip,.chip{padding:8px 15px}
+  .mis-hc{padding:6px 14px}
+  .cal-top button,.cal-nav button,.cal-seg button,.cal-vw button{min-height:42px}
+  button[role=radio],button[role=tab],button[role=switch],.v517fs button{min-height:44px}
+  summary{min-height:40px;display:flex;align-items:center}
+  .v7p-x{min-width:44px}
+  .pv-mx{width:40px;height:40px;top:0;right:0;font-size:24px;display:grid;place-items:center}
+  input[type=checkbox],input[type=radio]{width:22px;height:22px}
+}
+
+/* ---------- 2) CELULAR (≤ 700 px) ---------- */
+@media (max-width:700px){
+  /* áreas seguras del iPhone (notch / barra inferior) */
+  body{padding:var(--sat) var(--sar) 0 var(--sal)}
+  html,body{height:100%}
+  @supports (height:100dvh){html,body{height:100dvh}}
+  body{overscroll-behavior:none}
+  #view{overscroll-behavior:contain;scroll-padding-bottom:96px}
+  #view .page,#view .page.rd{padding-left:max(14px,var(--sal));padding-right:max(14px,var(--sar));padding-bottom:calc(104px + var(--sab))}
+
+  /* campos: 16 px evita el zoom automático de iOS al tocar */
+  input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=file]):not([type=color]),select,textarea{font-size:16px!important;min-height:44px}
+  textarea{min-height:88px}
+  .tbar .hb-search input{min-height:0}
+
+  /* barra superior: botones cómodos, buscador flexible */
+  .tbar{margin:6px 8px 0;gap:6px;padding:0 6px}
+  .tbar .hb-ic{width:42px;height:42px;border-radius:12px}
+  .tbar .hb-ic.bell.bv{min-width:42px;height:42px;padding:0 10px}
+  .tbar .hb-search{height:42px;flex:1 1 0!important;min-width:0}
+  .tbar .hb-search input{font-size:16px!important}
+  .tbar .hb-chip{flex:none}
+
+  /* títulos y textos que respiran mejor */
+  #view h1,.page h1{font-size:clamp(24px,7.2vw,30px);line-height:1.15}
+  #view h2{line-height:1.2}
+  .page .pghead{gap:10px}
+  .card{border-radius:16px}
+
+  /* pestañas: una sola fila deslizable (antes se apilaban en columna) */
+  .tabs{flex-wrap:nowrap!important;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;scrollbar-width:none;gap:4px;padding-right:12px}
+  .tabs::-webkit-scrollbar{display:none}
+  .tabs>*{flex:none;scroll-snap-align:start}
+  .tabs .gtab{padding:10px 14px;min-height:46px;display:inline-flex;align-items:center}
+  .tabs .mis-hist{margin-left:10px}
+  .chips,#gChips,#dvChips{display:flex;flex-wrap:nowrap;overflow-x:auto;gap:8px;padding:2px 2px 8px;margin-left:-2px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .chips::-webkit-scrollbar,#gChips::-webkit-scrollbar,#dvChips::-webkit-scrollbar{display:none}
+  .chips>*,#gChips>*,#dvChips>*{flex:none}
+
+  /* ---------- Provi (asistente): panel inferior anclado, fácil de leer y de cerrar ---------- */
+  #mas,#mas.bl{right:max(8px,var(--sar));bottom:calc(8px + var(--sab));width:60px;height:56px}
+  #mas:has(~ #bub:not([hidden])){opacity:0;pointer-events:none;transition:opacity .15s}
+  #bub,#mas~#bub,#mas.bl~#bub,body[data-view="home"] #bub,#bub.wide{
+    left:max(8px,var(--sal));right:max(8px,var(--sar));width:auto!important;max-width:none;
+    bottom:calc(8px + var(--sab))!important;border-radius:22px 22px 18px 18px;
+    box-shadow:0 -6px 40px rgba(0,40,20,.28),0 10px 30px rgba(0,0,0,.25)}
+  #bub:after{display:none}
+  #bub::before{content:"";position:absolute;z-index:3;top:6px;left:50%;width:42px;height:4px;margin-left:-21px;border-radius:4px;background:rgba(255,255,255,.5);pointer-events:none}
+  #bub .pv-scroll{max-height:min(80dvh,calc(100dvh - 96px - var(--sat) - var(--sab)),640px);max-height:min(80vh,640px);padding-bottom:14px}
+  @supports (height:100dvh){#bub .pv-scroll{max-height:min(80dvh,calc(100dvh - 96px - var(--sat) - var(--sab)),640px)}}
+  #bub .cats{grid-template-columns:1fr 1fr;gap:10px}
+  #bub .cat{min-height:76px;padding:12px}
+  #bub .askrow input,#bub .pv-box textarea{font-size:16px!important}
+  #bub .askrow .p,#bub .pv-send{min-height:44px;min-width:44px}
+  #bub .pv-lnk,#bub .pv-b,#bub .btn,#bub button{min-height:44px}
+  #bub .pv-x,#bub .pv-close,#bub [data-pv=x],#bub [aria-label^="Cerrar"]{min-width:44px;min-height:44px}
+  #bub .moreopt summary{min-height:48px}
+
+  /* mensajes sueltos de Provi (aviso, recordatorio) */
+  #pvmsg{left:max(8px,var(--sal));right:max(8px,var(--sar));width:auto;bottom:calc(74px + var(--sab));border-radius:18px;font-size:15px;padding:13px 44px 13px 14px}
+  #pvmsg .pv-b{min-height:44px;padding:8px 14px;font-size:14px}
+  #pvmsg .pv-b.pv-quiet{min-height:40px;font-size:13px}
+  #v6tip,#mas.bl~#v6tip{right:max(10px,var(--sar));bottom:calc(72px + var(--sab));max-width:calc(100vw - 96px)}
+
+  /* aviso de novedades: ya no se pega al borde ni tapa a Provi */
+  .v7pill{left:max(10px,var(--sal));right:calc(76px + var(--sar));bottom:calc(10px + var(--sab));max-width:none;width:auto;border-radius:16px}
+  .v7p-o{flex:1;min-width:0;padding:10px 4px 10px 12px}
+  .v7p-o>span:last-child{min-width:0}
+  .v7p-o b{font-size:13.5px;line-height:1.25}
+  .v7p-x{padding:0 6px}
+
+  /* ---------- Ventanas (modales): hoja que sube desde abajo ---------- */
+  .ov{align-items:flex-end;padding:0;padding-top:calc(var(--sat) + 28px)}
+  .ov .modal,.ov .modal.wide{max-width:none;width:100%;border-radius:22px 22px 0 0;max-height:calc(100dvh - var(--sat) - 28px)}
+  .modal header{padding:14px 16px;min-height:56px}
+  .modal header h2{font-size:17px}
+  .modal .x{width:44px;height:44px;display:grid;place-items:center;font-size:20px;margin:-6px -8px -6px 0}
+  .modal .body{padding:16px;max-height:calc(100dvh - var(--sat) - 28px - 150px);-webkit-overflow-scrolling:touch}
+  .modal footer{padding:12px 16px calc(12px + var(--sab));gap:8px}
+  .modal footer .btn{flex:1 1 auto;min-height:48px;justify-content:center}
+  .big .sumlist{grid-template-columns:1fr}
+
+  /* formularios dentro de ventanas: nada se sale del ancho (antes los campos se cortaban a la derecha) */
+  .modal .body{overflow-x:hidden}
+  .modal form,.modal .body>*{min-width:0;max-width:100%}
+  .modal input:not([type=checkbox]):not([type=radio]),.modal select,.modal textarea{width:100%;min-width:0;max-width:100%;box-sizing:border-box}
+  .modal .r3{grid-template-columns:1fr 1fr!important}
+  .modal .r3>div:first-child{grid-column:1/-1}
+  .modal .r2{grid-template-columns:1fr!important}
+  .modal .cats{flex-wrap:wrap}
+
+  /* menú lateral y ventanitas de la barra */
+  .sbar{padding-bottom:calc(10px + var(--sab))}
+  .hpop{max-width:calc(100vw - 16px)}
+  .hpop.bellpop{width:calc(100vw - 16px)}
+  .bellpop .bp-b{max-height:calc(100dvh - 190px)}
+
+  /* ---------- Calendario ---------- */
+  .cal-fab{left:max(14px,var(--sal));bottom:calc(14px + var(--sab));width:56px;height:56px}
+  body:has(.v7pill) .cal-fab{bottom:calc(84px + var(--sab))}
+  .cal-d{min-height:56px}
+  .cal-d .cal-ev,.cal-d .cal-hl,.cal-d .cal-i{font-size:11px}
+  .cal-d .cal-n b{font-size:15px}
+  .cal-d .cal-hl>span{display:none}           /* en el mes: sólo la marca de color; el detalle está en la lista del día */
+  .cal-d .cal-hl{justify-content:center}
+
+  /* letras mínimas legibles */
+  #view small,#view .tag,#view .tag.cat,.lg-dsf,.cal-hl{font-size:12px}
+  #view .muted,#view .hint{font-size:13.5px}
+  .hb-chip{font-size:12px}
+}
+
+/* teléfonos angostos (≤ 380 px: iPhone SE / mini) */
+@media (max-width:380px){
+  .tbar .hb-ic{width:40px;height:40px}
+  .tbar .hb-ic.bell.bv{min-width:40px;height:40px}
+  #bub .cats{grid-template-columns:1fr}
+  .v7pill{right:calc(70px + var(--sar))}
+}
+
+/* teléfono apaisado (poca altura): Provi y ventanas no se salen */
+@media (max-width:900px) and (max-height:480px){
+  #mas,#mas.bl{width:48px;height:44px}
+  #bub .pv-scroll{max-height:calc(100dvh - 24px)}
+  .modal .body{max-height:calc(100dvh - 140px)}
+  .ov{padding-top:8px}
+}
+</style>
 </head>
 <body data-app-version="5.20.8">
 <a class="skip" href="#view">Saltar al contenido</a>
@@ -6422,6 +6579,29 @@ html[data-theme="dark"] .ph-err{color:#f3d588;background:#3a3012;border-color:#7
 .dc-eerr{color:var(--red);font-weight:700;font-size:13px;min-height:18px;margin:6px 0}
 .dc-rev th,.dc-rev td{vertical-align:top;word-break:break-word}.dc-rev tr.ch td:last-child{background:var(--gxl)}
 @media (max-width:560px){.dc-grid{grid-template-columns:1fr}.dc-main .v{font-size:30px}}
+</style>
+<style id="mobportal5208">
+/* v5.20.8 · MÓVIL (portal de herramientas) */
+@media (pointer:coarse){
+  .btn{min-height:44px}.btn.sm{min-height:42px;padding:8px 14px;font-size:14px}
+  .chip,.seg button,.fchip,.tel,.lnk,.pill-btn{min-height:42px}
+  .chip{padding:8px 14px;font-size:14px}
+  .seg button{padding:8px 16px}
+  input[type=range]{min-height:36px}
+  summary{min-height:40px}
+}
+@media (max-width:700px){
+  html,body{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+  input:not([type=checkbox]):not([type=radio]):not([type=range]),select,textarea{font-size:16px!important;min-height:44px}
+  textarea{min-height:90px}
+  .chips{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:2px 2px 8px}
+  .chips::-webkit-scrollbar{display:none}.chips>*{flex:none}
+  .tel{min-height:44px;font-size:15px}
+  .badge,.pcat,.ofx-live,.ofx-cx-t{font-size:12px}
+  small{font-size:12.5px}
+  .filters{gap:8px}.filters input.mq{min-width:0;width:100%}
+  .btn.sm{flex:0 1 auto}
+}
 </style>
 </head>
 <body>
